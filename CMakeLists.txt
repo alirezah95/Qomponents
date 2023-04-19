@@ -22,7 +22,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
     # For Qt 6.2.x and Qt 6.3.x, major version in qt_add_qml_module() must be
     # greater than zero otherwise module is not registered
     qt_add_qml_module(${PROJECT_NAME}
-        URI "CommonComponents"
+        URI "QmlCommonComponents"
         SHARED
         OUTPUT_DIRECTORY
             ${CMAKE_BINARY_DIR}/${PROJECT_NAME}
