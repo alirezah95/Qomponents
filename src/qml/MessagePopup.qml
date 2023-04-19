@@ -1,10 +1,10 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick.Templates 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 
 Popup {
-    id: idRoot
+    id: _root
 
     enum Type {
         Ok,
@@ -13,16 +13,13 @@ Popup {
         Error
     }
 
-    property int type: MessageDialog.Type.Ok
-
-    property alias buttonsRow: idButtonsLayout
-    property alias messageLabel: idTextLbl
-    property alias text: idTextLbl.text
-    property alias description: idDescrTextLbl.text
-    property alias messageColor: idTextLbl.color
-    property alias descriptionColor: idDescrTextLbl.color
-    property alias descriptionTextFormat: idDescrTextLbl.textFormat
-    property alias buttonText: idOkBtn.text
+    property int type: MessagePopup.Type.Ok
+    property string message: ""
+    property string description: ""
+    property color messageColor: Material.primaryTextColor
+    property color descriptionColor: Material.secondaryTextColor
+    property int descriptionTextFormat: Text.MarkdownText
+    property int layoutDirection: Qt.LeftToRight
 
     anchors.centerIn: parent
 
@@ -40,91 +37,67 @@ Popup {
         radius: 8
     }
 
-    TextMetrics {
-        id: idMetric
-        text: "0"
-    }
+    contentItem: ColumnLayout {
+        layoutDirection: _root.layoutDirection
+        Label {
+            Layout.alignment: Qt.AlignRight | Qt.AlignTop
 
-    contentItem: Item {
-        implicitWidth: Math.max(idOkBtn.implicitWidth * 3,
-                                idContentLayout.implicitWidth)
-        implicitHeight: idContentLayout.implicitHeight
+            readonly property var icons: [
+                "\u2611", // Ok
+                "\u26a0", // Warning
+                "\u24d8", // Info
+                "\u2A02", // Error
+            ]
+            readonly property var colors: [
+                "green", // Ok
+                "yellow", // Warning
+                "blue", // Info
+                "red", // Error
+            ]
+
+            textFormat: "RichText"
+            color: colors[type]
+            text: "<qt style=\"font-size:20pt;font-weight:bold;\">"
+                  + icons[type] + "</qt>"
+        }
 
         ColumnLayout {
-            id: idContentLayout
-            anchors.fill: parent
+            Layout.fillWidth: true
 
-            RowLayout {
-                spacing: 12
+            Label {
+                Layout.fillWidth: true
 
-                Label {
-                    id: idIconLbl
+                font.bold: true
 
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-
-                    readonly property var icons: [
-                        "\u2611", // Ok
-                        "\u26a0", // Warning
-                        "\u24d8", // Info
-                        "\u2A02", // Error
-                    ]
-                    readonly property var colors: [
-                        "green", // Ok
-                        "yellow", // Warning
-                        "blue", // Info
-                        "red", // Error
-                    ]
-
-                    textFormat: "RichText"
-                    color: colors[type]
-                    text: "<qt style=\"font-size:20pt;font-weight:bold;\">"
-                          + icons[type] + "</qt>"
-                    horizontalAlignment: "AlignLeft"
-                }
-
-                ColumnLayout {
-                    Item {
-                        Layout.preferredHeight: idIconLbl.implicitHeight * 0.7
-                    }
-
-                    Label {
-                        id: idTextLbl
-                        Layout.fillWidth: true
-
-                        font.bold: true
-                    }
-
-                    Label {
-                        id: idDescrTextLbl
-                        Layout.fillWidth: true
-                        Layout.minimumHeight: 12
-
-                        opacity: 0.90
-
-                        font.italic: true
-
-                        textFormat: "MarkdownText"
-                    }
-                }
+                text: message
+                color: messageColor
+                wrapMode: Text.Wrap
             }
 
-            RowLayout {
-                id: idButtonsLayout
-
+            Label {
                 Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter
+                Layout.minimumHeight: 12
 
-                Button {
-                    id: idOkBtn
+                textFormat: descriptionTextFormat
+                text: description
+                color: descriptionColor
+            }
+        }
 
-                    Material.accent: idRoot.Material.accent
+        RowLayout {
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter
 
-                    text: "باشه"
-                    highlighted: true
+            Button {
+                Layout.leftMargin: implicitWidth
+                Layout.rightMargin: implicitWidth
 
-                    onClicked: idRoot.close()
-                }
+                Material.accent: _root.Material.accent
+
+                text: "باشه"
+                highlighted: true
+
+                onClicked: _root.close()
             }
         }
     }
