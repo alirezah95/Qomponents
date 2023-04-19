@@ -28,5 +28,9 @@ if(QT_VERSION_MAJOR EQUAL 6)
             ${CMAKE_BINARY_DIR}/${PROJECT_NAME}
         VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
         QML_FILES
+            src/qml/BusyIndicatorPopup.qml
+            src/qml/MessagePopup.qml
+            src/qml/BusyIndicatorBalls.qml
+            src/qml/BusyIndicatorDotCircle.qml
         )
 endif()
