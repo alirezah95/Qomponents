@@ -101,4 +101,26 @@ Popup {
             }
         }
     }
+
+    enter: Transition {
+        NumberAnimation {
+            duration: 250
+            property: "scale"
+            from: 0
+            to: 1
+            easing.type: Easing.OutBack
+            easing.overshoot: 3
+        }
+    }
+
+    exit: Transition {
+        NumberAnimation {
+            duration: 250
+            property: "scale"
+            from: 1
+            to: 0
+            easing.type: Easing.InBack
+            easing.overshoot: 3
+        }
+    }
 }
