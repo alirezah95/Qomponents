@@ -109,7 +109,6 @@ Popup {
             from: 0
             to: 1
             easing.type: Easing.OutBack
-            easing.overshoot: 3
         }
     }
 
@@ -120,7 +119,6 @@ Popup {
             from: 1
             to: 0
             easing.type: Easing.InBack
-            easing.overshoot: 3
         }
     }
 }
