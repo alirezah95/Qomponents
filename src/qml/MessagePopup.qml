@@ -16,6 +16,7 @@ Popup {
     property int type: MessagePopup.Type.Ok
     property string message: ""
     property string description: ""
+    property string okText: "OK"
     property color messageColor: Material.primaryTextColor
     property color descriptionColor: Material.secondaryTextColor
     property int descriptionTextFormat: Text.MarkdownText
@@ -94,7 +95,7 @@ Popup {
 
                 Material.accent: _root.Material.accent
 
-                text: "باشه"
+                text: okText
                 highlighted: true
 
                 onClicked: _root.close()
