@@ -17,6 +17,7 @@ set(PROJECT_LANGUAGES "QML")
 set(PROJECT_DESCRIPTION "Contains components that is common in most QML applications")
 set(PROJECT_HOMEPAGE_URL "https://github.com/alirezah95/QmlCommonComponents")
 
+#find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick)
 
 if(QT_VERSION_MAJOR EQUAL 6)
     # For Qt 6.2.x and Qt 6.3.x, major version in qt_add_qml_module() must be
@@ -32,5 +33,11 @@ if(QT_VERSION_MAJOR EQUAL 6)
             src/qml/MessagePopup.qml
             src/qml/BusyIndicatorBalls.qml
             src/qml/BusyIndicatorDotCircle.qml
+            src/qml/RoundImage.qml
         )
+
+    target_link_libraries(${PROJECT_NAME} PUBLIC
+        Qt6::Quick
+#        Qt6::Core5Compat
+    )
 endif()
