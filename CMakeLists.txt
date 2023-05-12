@@ -34,6 +34,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
             src/qml/BusyIndicatorBalls.qml
             src/qml/BusyIndicatorDotCircle.qml
             src/qml/RoundImage.qml
+            src/qml/PersianDateTumbler.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
