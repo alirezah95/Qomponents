@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 
 Pane {
@@ -109,13 +110,16 @@ Pane {
         }
     }
 
-    RowLayout {
+    GridLayout {
         anchors.fill: parent
 
-        spacing: 12
+        rowSpacing: 6
+        columns: 4
 
         Tumbler {
             id: _yearTum
+
+            Layout.fillWidth: true
 
             wrap: false
             model: _internal.yearModel
@@ -125,6 +129,9 @@ Pane {
 
         Tumbler {
             id: _monthTum
+
+            Layout.fillWidth: true
+            Layout.columnSpan: 2
 
             wrap: true
             model: useMonthName ? _internal.monthNamesModel
@@ -145,6 +152,8 @@ Pane {
 
         Tumbler {
             id: _dayTum
+
+            Layout.fillWidth: true
 
             wrap: true
             model: _internal.daysModel
