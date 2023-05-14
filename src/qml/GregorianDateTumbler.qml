@@ -9,7 +9,21 @@ Pane {
     readonly property int year: _yearTum.currentIndex + yearStart
     readonly property int month: _monthTum.currentIndex + 1
     readonly property int day: _dayTum.currentIndex + 1
-    readonly property string date: `${year}/${month}/${day}`
+    readonly property string date: {
+        var dt = `${year}/`
+
+        if (month < 10) {
+            dt += '0'
+        }
+        dt += `${month}/`
+
+        if (day < 10) {
+            dt += '0'
+        }
+        dt += `${day}`
+
+        return dt
+    }
 
     readonly property bool leapYear: {
         if (year % 400 === 0)
