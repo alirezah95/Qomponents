@@ -23,19 +23,21 @@ if(QT_VERSION_MAJOR EQUAL 6)
 #    find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick)
 
     qt_add_qml_module(${PROJECT_NAME}
-        URI "QmlCommonComponents"
+        URI "Qomponents"
         SHARED
         RESOURCES
 
         VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
         QML_FILES
-            src/qml/BusyIndicatorPopup.qml
-            src/qml/MessagePopup.qml
-            src/qml/BusyIndicatorBalls.qml
-            src/qml/BusyIndicatorDotCircle.qml
-            src/qml/RoundImage.qml
-            src/qml/PersianDateTumbler.qml
-            src/qml/GregorianDateTumbler.qml
+            qml/BusyIndicator/BusyIndicatorPopup.qml
+            qml/BusyIndicator/BusyIndicatorBalls.qml
+            qml/BusyIndicator/BusyIndicatorDotCircle.qml
+
+            qml/MessagePopup.qml
+            qml/RoundImage.qml
+
+            qml/Date/PersianDateTumbler.qml
+            qml/Date/GregorianDateTumbler.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
