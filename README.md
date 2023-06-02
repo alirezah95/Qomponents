@@ -1,2 +1,2 @@
-# QmlCommonComponent
-Contains components that is common in most QML applications
+# Qomponent
+Contains components that can be useful in most QML applications

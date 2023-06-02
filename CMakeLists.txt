@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.24.1)
 
-set(PROJECT_NAME "QmlCommonComponents")
+find_package(QT NAMES Qt6 Qt5)
+
+set(PROJECT_NAME "Qomponents")
 set(PROJECT_VERSION_MAJOR 1)
 set(PROJECT_VERSION_MINOR 2)
 set(PROJECT_VERSION_PATCH 0)
@@ -15,31 +17,30 @@ set(PROJECT_LICENSE_TYPE "MIT")
 set(PROJECT_CREATOR "Alireza Hasani")
 set(PROJECT_LANGUAGES "QML")
 set(PROJECT_DESCRIPTION "Contains components that is common in most QML applications")
-set(PROJECT_HOMEPAGE_URL "https://github.com/alirezah95/QmlCommonComponents")
-
-#find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick)
+set(PROJECT_HOMEPAGE_URL "https://github.com/alirezah95/Qomponents")
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    # For Qt 6.2.x and Qt 6.3.x, major version in qt_add_qml_module() must be
-    # greater than zero otherwise module is not registered
+#    find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick)
+
     qt_add_qml_module(${PROJECT_NAME}
-        URI "QmlCommonComponents"
+        URI "Qomponents"
         SHARED
-        OUTPUT_DIRECTORY
-            ${CMAKE_BINARY_DIR}/${PROJECT_NAME}
+        RESOURCES
+
         VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
         QML_FILES
-            src/qml/BusyIndicatorPopup.qml
-            src/qml/MessagePopup.qml
-            src/qml/BusyIndicatorBalls.qml
-            src/qml/BusyIndicatorDotCircle.qml
-            src/qml/RoundImage.qml
-            src/qml/PersianDateTumbler.qml
-            src/qml/GregorianDateTumbler.qml
+            qml/BusyIndicator/BusyIndicatorPopup.qml
+            qml/BusyIndicator/BusyIndicatorBalls.qml
+            qml/BusyIndicator/BusyIndicatorDotCircle.qml
+
+            qml/MessagePopup.qml
+            qml/RoundImage.qml
+
+            qml/Date/PersianDateTumbler.qml
+            qml/Date/GregorianDateTumbler.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
         Qt6::Quick
-#        Qt6::Core5Compat
     )
 endif()
