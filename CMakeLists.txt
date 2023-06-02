@@ -34,7 +34,9 @@ if(QT_VERSION_MAJOR EQUAL 6)
             qml/BusyIndicator/BusyIndicatorDotCircle.qml
 
             qml/MessagePopup.qml
-            qml/RoundImage.qml
+
+            qml/Utils/RoundImage.qml
+            qml/Utils/ItemHintContainer.qml
 
             qml/Date/PersianDateTumbler.qml
             qml/Date/GregorianDateTumbler.qml
