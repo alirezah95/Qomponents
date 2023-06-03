@@ -23,9 +23,21 @@ set(PROJECT_HOMEPAGE_URL "https://github.com/alirezah95/Qomponents")
 if(QT_VERSION_MAJOR EQUAL 6)
 #    find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick)
 
+    # Qomponents module
     qt_add_qml_module(${PROJECT_NAME}
-        URI "${PROJECT_NAME}.Material"
+        URI "${PROJECT_NAME}"
         SHARED
+        OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        RESOURCES
+
+        VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+        QML_FILES
+            qml/Material/Utils/RoundImage.qml
+            qml/Material/Utils/ItemHintContainer.qml
+        )
+
+    qt_add_qml_module(${PROJECT_NAME}Material
+        URI "${PROJECT_NAME}.Material"
         OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Material
         RESOURCES
 
@@ -37,9 +49,6 @@ if(QT_VERSION_MAJOR EQUAL 6)
 
             qml/Material/MessagePopup.qml
 
-            qml/Material/Utils/RoundImage.qml
-            qml/Material/Utils/ItemHintContainer.qml
-
             qml/Material/Date/PersianDateTumbler.qml
             qml/Material/Date/GregorianDateTumbler.qml
 
@@ -48,5 +57,6 @@ if(QT_VERSION_MAJOR EQUAL 6)
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
         Qt6::Quick
+        ${PROJECT_NAME}Material
     )
 endif()
