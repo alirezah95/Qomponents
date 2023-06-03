@@ -71,7 +71,7 @@ T.Button {
             pressed: control.pressed
             anchor: control
             active: enabled && (control.down || control.visualFocus || control.hovered)
-            color: control.Material.highlightedRippleColor
+            color: control.flat || control.highlighted ? control.Material.highlightedRippleColor : control.Material.rippleColor
         }
     }
 }
