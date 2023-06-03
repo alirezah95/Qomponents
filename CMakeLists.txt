@@ -19,29 +19,31 @@ set(PROJECT_LANGUAGES "QML")
 set(PROJECT_DESCRIPTION "Contains components that is common in most QML applications")
 set(PROJECT_HOMEPAGE_URL "https://github.com/alirezah95/Qomponents")
 
+
 if(QT_VERSION_MAJOR EQUAL 6)
 #    find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick)
 
     qt_add_qml_module(${PROJECT_NAME}
-        URI "Qomponents"
+        URI "${PROJECT_NAME}.Material"
         SHARED
+        OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Material
         RESOURCES
 
-        VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+        VERSION 1.0
         QML_FILES
-            qml/BusyIndicator/BusyIndicatorPopup.qml
-            qml/BusyIndicator/BusyIndicatorBalls.qml
-            qml/BusyIndicator/BusyIndicatorDotCircle.qml
+            qml/Material/BusyIndicator/BusyIndicatorPopup.qml
+            qml/Material/BusyIndicator/BusyIndicatorBalls.qml
+            qml/Material/BusyIndicator/BusyIndicatorDotCircle.qml
 
-            qml/MessagePopup.qml
+            qml/Material/MessagePopup.qml
 
-            qml/Utils/RoundImage.qml
-            qml/Utils/ItemHintContainer.qml
+            qml/Material/Utils/RoundImage.qml
+            qml/Material/Utils/ItemHintContainer.qml
 
-            qml/Date/PersianDateTumbler.qml
-            qml/Date/GregorianDateTumbler.qml
+            qml/Material/Date/PersianDateTumbler.qml
+            qml/Material/Date/GregorianDateTumbler.qml
 
-            qml/Button/ButtonBordered.qml
+            qml/Material/Button/ButtonBordered.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
