@@ -40,6 +40,8 @@ if(QT_VERSION_MAJOR EQUAL 6)
 
             qml/Date/PersianDateTumbler.qml
             qml/Date/GregorianDateTumbler.qml
+
+            qml/Button/ButtonBordered.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
