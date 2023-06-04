@@ -19,28 +19,43 @@ set(PROJECT_LANGUAGES "QML")
 set(PROJECT_DESCRIPTION "Contains components that is common in most QML applications")
 set(PROJECT_HOMEPAGE_URL "https://github.com/alirezah95/Qomponents")
 
+
 if(QT_VERSION_MAJOR EQUAL 6)
 #    find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick)
 
+    # Qomponents module
     qt_add_qml_module(${PROJECT_NAME}
-        URI "Qomponents"
+        URI "${PROJECT_NAME}"
         SHARED
+        OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         RESOURCES
 
         VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
         QML_FILES
-            qml/BusyIndicator/BusyIndicatorPopup.qml
-            qml/BusyIndicator/BusyIndicatorBalls.qml
-            qml/BusyIndicator/BusyIndicatorDotCircle.qml
-
-            qml/MessagePopup.qml
             qml/RoundImage.qml
+            qml/ItemHintContainer.qml
+        )
 
-            qml/Date/PersianDateTumbler.qml
-            qml/Date/GregorianDateTumbler.qml
+    qt_add_qml_module(${PROJECT_NAME}Material
+        URI "${PROJECT_NAME}.Material"
+        OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Material
+        RESOURCES
+
+        VERSION 1.0
+        QML_FILES
+            qml/Material/BusyIndicators/BusyIndicatorPopup.qml
+            qml/Material/BusyIndicators/BusyIndicatorBalls.qml
+            qml/Material/BusyIndicators/BusyIndicatorDotCircle.qml
+
+            qml/Material/Controls/MessagePopup.qml
+            qml/Material/Controls/PersianDateTumbler.qml
+            qml/Material/Controls/GregorianDateTumbler.qml
+            qml/Material/Controls/ButtonBordered.qml
+            qml/Material/Controls/TabBarVertical.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
         Qt6::Quick
+        ${PROJECT_NAME}Material
     )
 endif()
