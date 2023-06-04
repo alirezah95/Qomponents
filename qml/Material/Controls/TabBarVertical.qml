@@ -4,6 +4,8 @@ import QtQuick.Controls.Material 2.15
 TabBar {
     id: _control
 
+    contentWidth: contentItem.contentItem.childrenRect.width
+
     contentItem: ListView {
         model: _control.contentModel
         currentIndex: _control.currentIndex
