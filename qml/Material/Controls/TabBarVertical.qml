@@ -4,14 +4,6 @@ import QtQuick.Controls.Material 2.15
 TabBar {
     id: _control
 
-    Material.elevation: 1
-
-    implicitWidth: 64
-    implicitHeight: 300
-
-    leftPadding: 8
-    rightPadding: 8
-
     contentItem: ListView {
         model: _control.contentModel
         currentIndex: _control.currentIndex
@@ -22,23 +14,20 @@ TabBar {
         flickableDirection: Flickable.AutoFlickIfNeeded
         snapMode: ListView.SnapToItem
 
-        highlightMoveDuration: 400
+        highlightMoveDuration: 250
+        highlightResizeDuration: 0
         highlightFollowsCurrentItem: true
         highlightRangeMode: ListView.ApplyRange
-        preferredHighlightBegin: 40
-        preferredHighlightEnd: height - 40
+        preferredHighlightBegin: 48
+        preferredHighlightEnd: height - 48
 
         highlight: Item {
+            z: 2
             Rectangle {
-                anchors {
-                    right: parent.right
-                    top: parent.top
-                }
-
                 width: 2
-                height: currentItem.height
-
-                color: Material.accent
+                height: parent.height
+                x: _control.position === TabBar.Footer ? 0 : parent.width - width
+                color: _control.Material.accentColor
             }
         }
     }
