@@ -32,8 +32,8 @@ if(QT_VERSION_MAJOR EQUAL 6)
 
         VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
         QML_FILES
-            qml/Material/Utils/RoundImage.qml
-            qml/Material/Utils/ItemHintContainer.qml
+            qml/RoundImage.qml
+            qml/ItemHintContainer.qml
         )
 
     qt_add_qml_module(${PROJECT_NAME}Material
@@ -43,16 +43,14 @@ if(QT_VERSION_MAJOR EQUAL 6)
 
         VERSION 1.0
         QML_FILES
-            qml/Material/BusyIndicator/BusyIndicatorPopup.qml
-            qml/Material/BusyIndicator/BusyIndicatorBalls.qml
-            qml/Material/BusyIndicator/BusyIndicatorDotCircle.qml
+            qml/Material/BusyIndicators/BusyIndicatorPopup.qml
+            qml/Material/BusyIndicators/BusyIndicatorBalls.qml
+            qml/Material/BusyIndicators/BusyIndicatorDotCircle.qml
 
-            qml/Material/MessagePopup.qml
-
-            qml/Material/Date/PersianDateTumbler.qml
-            qml/Material/Date/GregorianDateTumbler.qml
-
-            qml/Material/Button/ButtonBordered.qml
+            qml/Material/Controls/MessagePopup.qml
+            qml/Material/Controls/PersianDateTumbler.qml
+            qml/Material/Controls/GregorianDateTumbler.qml
+            qml/Material/Controls/ButtonBordered.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
