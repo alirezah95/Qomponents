@@ -51,6 +51,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
             qml/Material/Controls/PersianDateTumbler.qml
             qml/Material/Controls/GregorianDateTumbler.qml
             qml/Material/Controls/ButtonBordered.qml
+            qml/Material/Controls/TabBarVertical.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
