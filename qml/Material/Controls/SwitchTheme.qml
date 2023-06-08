@@ -15,10 +15,13 @@ Switch {
     property color expandedDarkColor: Material.color(Material.Grey, Material.Shade500)
 
     indicator: Rectangle {
+        x: _control.text ? (_control.mirrored ? _control.width - width - _control.rightPadding : _control.leftPadding) : _control.leftPadding + (_control.availableWidth - width) / 2
+        y: _control.topPadding + (_control.availableHeight - height) / 2
         implicitWidth: 64
         implicitHeight: 40
 
-        width: expanded ? parent.width : implicitWidth
+        width: expanded ? parent.availableWidth: implicitWidth
+        height: _control.availableHeight
 
         radius: expanded ? 6 : height / 2
         color: _lightLbl.visible ? (parent.checked ? expandedDarkColor
@@ -43,7 +46,7 @@ Switch {
             font: collapsedFont
 
             color: _control.checked ? Material.background
-                                     : Material.color(Material.Orange)
+                                     : Material.accent
             textFormat: "RichText"
             text: _control.checked ? collapsedDarkText
                                    : collapsedLightText
