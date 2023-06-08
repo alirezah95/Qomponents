@@ -17,6 +17,7 @@ Switch {
     indicator: Rectangle {
         x: _control.text ? (_control.mirrored ? _control.width - width - _control.rightPadding : _control.leftPadding) : _control.leftPadding + (_control.availableWidth - width) / 2
         y: _control.topPadding + (_control.availableHeight - height) / 2
+
         implicitWidth: 64
         implicitHeight: 40
 
@@ -73,42 +74,36 @@ Switch {
 
         Label {
             id: _lightLbl
+
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: parent.left
                 leftMargin: 6
             }
 
-            visible: width > implicitWidth
+            visible: width > implicitWidth * 1.5
             height: parent.height - 12
             width: parent.width / 2
 
-            padding: 0
-            background: null
-
             text: lightThemeText
-            elide: "ElideRight"
             verticalAlignment: "AlignVCenter"
             horizontalAlignment: "AlignHCenter"
         }
 
         Label {
             id: _darkLbl
+
             anchors {
                 verticalCenter: parent.verticalCenter
                 right: parent.right
                 rightMargin: 6
             }
 
-            visible: width > implicitWidth
+            visible: width > implicitWidth * 1.5
             height: parent.height - 12
             width: parent.width / 2
 
-            padding: 0
-            background: null
-
             text: darkThemeText
-            elide: "ElideRight"
             verticalAlignment: "AlignVCenter"
             horizontalAlignment: "AlignHCenter"
         }
