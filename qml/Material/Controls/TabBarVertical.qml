@@ -1,10 +1,17 @@
 import QtQuick 2.15
+import QtQuick.Templates 2.15 as T
 import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Material.impl 2.15
 
-TabBar {
+T.TabBar {
     id: _control
 
-    contentWidth: contentItem.contentItem.childrenRect.width
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            contentItem.implicitWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             contentItem.implicitHeight + topPadding + bottomPadding)
+
+    spacing: 1
 
     contentItem: ListView {
         model: _control.contentModel
@@ -31,6 +38,16 @@ TabBar {
                 x: _control.position === TabBar.Footer ? 0 : parent.width - width
                 color: _control.Material.accentColor
             }
+        }
+    }
+
+    background: Rectangle {
+        color: _control.Material.backgroundColor
+
+        layer.enabled: _control.Material.elevation > 0
+        layer.effect: ElevationEffect {
+            elevation: _control.Material.elevation
+            fullWidth: true
         }
     }
 }
