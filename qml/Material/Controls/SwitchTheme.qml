@@ -12,7 +12,7 @@ Switch {
     property string collapsedLightText: "\u263c"
     property string collapsedDarkText: "\u263d"
     property color expandedLightColor: Qt.alpha(Material.accentColor, 0.35)
-    property color expandedDarkColor: Material.color(Material.Grey, Material.Shade500)
+    property color expandedDarkColor: Qt.lighter(Material.background, 1.5)
 
     indicator: Rectangle {
         x: _control.text ? (_control.mirrored ? _control.width - width - _control.rightPadding : _control.leftPadding) : _control.leftPadding + (_control.availableWidth - width) / 2
@@ -47,7 +47,7 @@ Switch {
             font: collapsedFont
 
             color: _control.checked ? Material.background
-                                     : Material.accent
+                                    : Material.accent
             textFormat: "RichText"
             text: _control.checked ? collapsedDarkText
                                    : collapsedLightText
@@ -70,6 +70,11 @@ Switch {
             z: -1
 
             radius: 6
+            color: Material.background
+
+            Behavior on color {
+                ColorAnimation { duration: 100 }
+            }
         }
 
         Label {
