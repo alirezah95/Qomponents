@@ -46,6 +46,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
             qml/Material/BusyIndicators/BusyIndicatorPopup.qml
             qml/Material/BusyIndicators/BusyIndicatorBalls.qml
             qml/Material/BusyIndicators/BusyIndicatorDotCircle.qml
+            qml/Material/BusyIndicators/BusyIndicatorTwoCircles.qml
 
             qml/Material/Controls/MessagePopup.qml
             qml/Material/Controls/PersianDateTumbler.qml
