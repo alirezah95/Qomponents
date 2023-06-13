@@ -14,6 +14,9 @@ T.TabBar {
     spacing: 1
 
     contentItem: ListView {
+        implicitWidth: contentItem.childrenRect.width
+        implicitHeight: contentHeight
+
         model: _control.contentModel
         currentIndex: _control.currentIndex
 
