@@ -54,6 +54,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
             qml/Material/Controls/ButtonBordered.qml
             qml/Material/Controls/TabBarVertical.qml
             qml/Material/Controls/SwitchTheme.qml
+            qml/Material/Controls/MessageDrawer.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
