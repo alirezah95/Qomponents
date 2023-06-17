@@ -20,6 +20,9 @@ Drawer {
     topPadding: 16
     bottomPadding: 16
 
+    dim: false
+    modal: false
+
     interactive: false
     edge: Qt.BottomEdge
 
