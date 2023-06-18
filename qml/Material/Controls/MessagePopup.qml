@@ -14,13 +14,19 @@ Popup {
     }
 
     property int type: MessagePopup.Type.Ok
+
     property string message: ""
-    property string description: ""
-    property string okText: "OK"
     property color messageColor: Material.primaryTextColor
+    property int messageTextFormat: Text.MarkdownText
+
+    property string description: ""
     property color descriptionColor: Material.secondaryTextColor
     property int descriptionTextFormat: Text.MarkdownText
+
+    property string okText: "OK"
     property int layoutDirection: Qt.LeftToRight
+
+    readonly property RowLayout buttonsRow: _buttonsRow
 
     anchors.centerIn: parent
 
@@ -70,6 +76,7 @@ Popup {
 
                 font.bold: true
 
+                textFormat: messageTextFormat
                 text: message
                 color: messageColor
                 wrapMode: Text.Wrap
@@ -86,6 +93,8 @@ Popup {
         }
 
         RowLayout {
+            id: _buttonsRow
+
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignHCenter
 
