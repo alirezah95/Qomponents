@@ -26,6 +26,11 @@ Popup {
     property string okText: "OK"
     property int layoutDirection: Qt.LeftToRight
 
+    property color colorOk: "green"
+    property color colorWarning: "yellow"
+    property color colorInfo: "blue"
+    property color colorError: "red"
+
     readonly property RowLayout buttonsRow: _buttonsRow
 
     anchors.centerIn: parent
@@ -55,15 +60,20 @@ Popup {
                 "\u24d8", // Info
                 "\u2A02", // Error
             ]
-            readonly property var colors: [
-                "green", // Ok
-                "yellow", // Warning
-                "blue", // Info
-                "red", // Error
-            ]
 
             textFormat: "RichText"
-            color: colors[type]
+            color: {
+                switch(type) {
+                case 0:
+                    return colorOk
+                case 1:
+                    return colorWarning
+                case 2:
+                    return colorInfo
+                case 3:
+                    return colorError
+                }
+            }
             text: "<qt style=\"font-size:20pt;font-weight:bold;\">"
                   + icons[type] + "</qt>"
         }
