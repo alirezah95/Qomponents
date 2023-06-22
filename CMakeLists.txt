@@ -34,6 +34,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
         QML_FILES
             qml/RoundImage.qml
             qml/ItemHintContainer.qml
+            qml/LabelAutoScroll.qml
         )
 
     qt_add_qml_module(${PROJECT_NAME}Material
