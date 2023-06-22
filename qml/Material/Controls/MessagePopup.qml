@@ -13,6 +13,9 @@ Popup {
         Error
     }
 
+    signal accepted()
+    signal rejected()
+
     property int type: MessagePopup.Type.Ok
 
     property string message: ""
@@ -23,7 +26,10 @@ Popup {
     property color descriptionColor: Material.secondaryTextColor
     property int descriptionTextFormat: Text.MarkdownText
 
-    property string okText: "OK"
+    property string acceptText: "Ok"
+    property string rejectText: "Cancle"
+    readonly property alias acceptButton: _acceptBtn
+    readonly property alias rejectButton: _rejectBtn
     property int layoutDirection: Qt.LeftToRight
 
     property color colorOk: "green"
@@ -109,15 +115,21 @@ Popup {
             Layout.alignment: Qt.AlignHCenter
 
             Button {
-                Layout.leftMargin: implicitWidth
-                Layout.rightMargin: implicitWidth
+                id: _acceptBtn
 
-                Material.accent: _root.Material.accent
-
-                text: okText
+                text: acceptText
                 highlighted: true
 
-                onClicked: _root.close()
+                onClicked: _root.accepted()
+            }
+
+            Button {
+                id: _rejectBtn
+
+                text: rejectText
+                highlighted: true
+
+                onClicked: _root.rejected()
             }
         }
     }
