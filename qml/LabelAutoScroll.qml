@@ -20,6 +20,19 @@ Label {
         }
     }
 
+    Connections {
+        target: viewport
+
+        function onWidthChanged()
+        {
+            if (viewport.width > width) {
+                state = "stop"
+            } else if (state === "stop") {
+                state = "begining"
+            }
+        }
+    }
+
     onTextChanged: {
         state = "stop"
         state = "begining"
