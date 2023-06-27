@@ -13,7 +13,7 @@ BusyIndicator {
         implicitWidth: 64
 
         layer.enabled: true
-        layer.samples: 16
+        layer.samples: 8
 
         Shape {
             id: _shape
@@ -64,7 +64,9 @@ BusyIndicator {
                         }
                     }
 
-                    PauseAnimation { duration: 300 }
+                    PauseAnimation {
+                        duration: 300
+                    }
 
                     ParallelAnimation {
                         NumberAnimation {
@@ -90,7 +92,9 @@ BusyIndicator {
                             easing.type: Easing.OutSine
                         }
                     }
-                    PauseAnimation { duration: 150}
+                    PauseAnimation {
+                        duration: 150
+                    }
                 }
             }
         }
@@ -170,7 +174,9 @@ BusyIndicator {
                         }
                     }
 
-                    PauseAnimation { duration: 150 }
+                    PauseAnimation {
+                        duration: 150
+                    }
                 }
             }
         }
