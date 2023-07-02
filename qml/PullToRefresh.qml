@@ -9,9 +9,10 @@ Item {
 
     property Flickable view
     property color color: "black"
+    property color actionColor: "cyan"
     property int actionHeight: 80
     property bool actOnDragRelease: true
-    property int refreshIconSize: 32
+    property int refreshIconSize: 28
 
     readonly property real position: _root.height / _root.actionHeight
 
@@ -21,8 +22,8 @@ Item {
     Item {
         anchors.centerIn: parent
         anchors.verticalCenterOffset: Math.min(position - 0.5, 0) * (refreshIconSize * 1.5)
-        width: refreshIconSize * 2
-        height: refreshIconSize * 2
+        width: refreshIconSize + 16
+        height: refreshIconSize + 16
         opacity: position < 0.2 ? 0 : position
         scale: 1. + Math.min(position - 0.5, 0) * 1.2
         layer.enabled: true
@@ -46,7 +47,7 @@ Item {
                 startX: _circleSh.width / 2
                 startY: _circleSh.height / 2
                 fillColor: "transparent"
-                strokeColor: _root.color
+                strokeColor: _root.position === 1 ? _root.actionColor : _root.color
                 strokeWidth: 4
 
                 PathAngleArc {
@@ -58,6 +59,10 @@ Item {
                     sweepAngle: _root.position * 300
                     radiusX: _circleShP.availableWidth
                     radiusY: _circleShP.availableHeight
+                }
+
+                Behavior on strokeColor {
+                    ColorAnimation { duration: 150 }
                 }
             }
 
@@ -72,9 +77,9 @@ Item {
             ShapePath {
                 id: _triaShP
 
-                property int side: _circleShP.strokeWidth * 3 * (1 + Math.min(position - 0.5, 0))
+                property int side: _circleShP.strokeWidth * 2.4 * (1 + Math.min(position - 0.5, 0))
 
-                fillColor: _root.color
+                fillColor: _circleShP.strokeColor
                 strokeColor: "transparent"
 
                 startY: 0
