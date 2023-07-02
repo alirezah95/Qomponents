@@ -35,6 +35,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
             qml/RoundImage.qml
             qml/ItemHintContainer.qml
             qml/LabelAutoScroll.qml
+            qml/PullToRefresh.qml
         )
 
     qt_add_qml_module(${PROJECT_NAME}Material
