@@ -3,6 +3,8 @@ import QtQuick.Templates 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 
+import "../Impl"
+
 Popup {
     id: _root
 
@@ -17,53 +19,29 @@ Popup {
     signal accepted()
     signal rejected()
 
-    QtObject {
-        id: _informative
-
-        property color color: Material.foreground
-        property int textFormat: Text.MarkdownText
-        property string text: ""
-        property alias font: _informativeLbl.font
-        property alias horizontalAlignment: _informativeLbl.horizontalAlignment
-        property alias verticalAlignment: _informativeLbl.verticalAlignment
+    property MessagePopupTextObject informative: MessagePopupTextObject {
+        color: Material.foreground
+        text: ""
+        font: _root.font
+    }
+    property MessagePopupTextObject detailed: MessagePopupTextObject {
+        color: Material.foreground
+        text: ""
+        font: _root.font
     }
 
-    QtObject {
-        id: _detailed
-
-        property color color: Material.foreground
-        property int textFormat: Text.MarkdownText
-        property string text: ""
-        property alias font: _detailedLbl.font
-        property alias horizontalAlignment: _detailedLbl.horizontalAlignment
-        property alias verticalAlignment: _detailedLbl.verticalAlignment
-
-        font.weight: Font.Light
+    property MessagePopupColorsObject colors: MessagePopupColorsObject {
+        ok: Material.color(Material.Green)
+        warning: Material.color(Material.Orange)
+        info: Material.color(Material.Blue)
+        error: Material.color(Material.Red)
     }
-
-    QtObject {
-        id: _colors
-
-        property color ok: "green"
-        property color warning: "yellow"
-        property color info: "blue"
-        property color error: "red"
+    property MessagePopupIconsObject icons: MessagePopupIconsObject {
+        font {
+            family: _root.font.family
+            pointSize: 24
+        }
     }
-
-    QtObject {
-        id: _icons
-
-        property alias font: _iconLbl.font
-        property string ok: "\u2611"
-        property string warning: "\u26a0"
-        property string info: "\u24d8"
-        property string error: "\u2a02"
-    }
-
-    property alias informative: _informative
-    property alias detailed: _detailed
-    property alias colors: _colors
-    property alias icons: _icons
 
     property int type: MessagePopup.Type.Ok
 
@@ -102,6 +80,9 @@ Popup {
 
             Layout.alignment: Qt.AlignRight | Qt.AlignTop
 
+            visible: type !== MessagePopup.Type.None
+
+            font: icons.font
             textFormat: "RichText"
             color: {
                 switch(type) {
@@ -118,27 +99,18 @@ Popup {
                 }
             }
             text: {
-                var icon = ""
-
                 switch(type) {
                 case MessagePopup.Type.Ok:
-                    icon = icons.ok
-                    break
+                    return icons.ok
                 case MessagePopup.Type.Warning:
-                    icon = icons.warning
-                    break
+                    return icons.warning
                 case MessagePopup.Type.Info:
-                    icon = icons.info
-                    break
+                    return icons.info
                 case MessagePopup.Type.Error:
-                    icon = icons.error
-                    break
+                    return icons.error
                 default:
-                    icon = ""
-                    break
+                    return ""
                 }
-
-                return `<qt style="font-size:${icons.pointSize}pt;font-weight:bold;">${icon}</qt>`
             }
         }
 
@@ -151,13 +123,12 @@ Popup {
 
                 Layout.fillWidth: true
 
-                font.weight: Font.DemiBold
+                font: informative.font
 
                 color: informative.color
                 textFormat: informative.textFormat
                 text: informative.text
                 wrapMode: Text.Wrap
-                verticalAlignment: "AlignTop"
             }
 
             Label {
@@ -165,13 +136,12 @@ Popup {
 
                 Layout.fillWidth: true
 
-                font.weight: Font.Light
+                font: detailed.font
 
                 color: detailed.color
                 textFormat: detailed.textFormat
                 text: detailed.text
                 wrapMode: Text.Wrap
-                verticalAlignment: "AlignTop"
             }
         }
 
