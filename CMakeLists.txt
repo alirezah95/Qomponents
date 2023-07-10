@@ -57,6 +57,10 @@ if(QT_VERSION_MAJOR EQUAL 6)
             qml/Material/Controls/TabBarVertical.qml
             qml/Material/Controls/SwitchTheme.qml
             qml/Material/Controls/MessageDrawer.qml
+
+            qml/Material/Impl/MessagePopupTextObject.qml
+            qml/Material/Impl/MessagePopupColorsObject.qml
+            qml/Material/Impl/MessagePopupIconsObject.qml
         )
 
     target_link_libraries(${PROJECT_NAME} PUBLIC
