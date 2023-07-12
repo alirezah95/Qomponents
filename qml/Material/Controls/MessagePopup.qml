@@ -128,7 +128,10 @@ Popup {
                 color: informative.color
                 textFormat: informative.textFormat
                 text: informative.text
-                wrapMode: Text.Wrap
+                horizontalAlignment: informative.horizontalAlignment
+                verticalAlignment: informative.verticalAlignment
+                wrapMode: informative.wrapMode
+                style: informative.style
             }
 
             Label {
@@ -141,7 +144,10 @@ Popup {
                 color: detailed.color
                 textFormat: detailed.textFormat
                 text: detailed.text
-                wrapMode: Text.Wrap
+                horizontalAlignment: detailed.horizontalAlignment
+                verticalAlignment: detailed.verticalAlignment
+                wrapMode: detailed.wrapMode
+                style: detailed.style
             }
         }
 
