@@ -73,7 +73,7 @@ Popup {
         anchors.fill: parent
 
         layoutDirection: _root.layoutDirection
-        spacing: 4
+        spacing: 16
 
         Label {
             id: _iconLbl
@@ -116,7 +116,7 @@ Popup {
 
         ColumnLayout {
             layoutDirection: parent.layoutDirection
-            spacing: 8
+            spacing: 4
 
             Label {
                 id: _informativeLbl
@@ -138,6 +138,8 @@ Popup {
                 id: _detailedLbl
 
                 Layout.fillWidth: true
+
+                visible: contentWidth > 0
 
                 font: detailed.font
 
