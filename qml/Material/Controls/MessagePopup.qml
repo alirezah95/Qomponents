@@ -123,6 +123,7 @@ Popup {
 
                 Layout.fillWidth: true
 
+                visible: informative.visible
                 font: informative.font
 
                 color: informative.color
@@ -139,8 +140,7 @@ Popup {
 
                 Layout.fillWidth: true
 
-                visible: contentWidth > 0
-
+                visible: detailed.visible
                 font: detailed.font
 
                 color: detailed.color
