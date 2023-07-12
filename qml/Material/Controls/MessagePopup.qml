@@ -116,7 +116,7 @@ Popup {
 
         ColumnLayout {
             layoutDirection: parent.layoutDirection
-            spacing: 4
+            spacing: 16
 
             Label {
                 id: _informativeLbl
@@ -158,6 +158,7 @@ Popup {
 
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+            Layout.topMargin: 8
 
             layoutDirection: parent.layoutDirection
 
