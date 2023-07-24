@@ -49,6 +49,7 @@ T.Button {
         implicitWidth: 64
         implicitHeight: control.Material.buttonHeight
 
+        color: control.Material.backgroundColor
         radius: control.Material.roundedScale === Material.FullScale ? height / 2 : control.Material.roundedScale
         border.width: borderWidth
         border.color: control.Material.buttonColor(control.Material.theme, control.Material.background,
