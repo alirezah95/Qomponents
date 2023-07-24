@@ -35,7 +35,6 @@ Label {
 
     onTextChanged: {
         state = "stop"
-        state = "begining"
     }
 
     state: "stop"
