@@ -5,6 +5,7 @@ Drawer {
     id: _control
 
     property string message: ""
+    property int messageTextFormat: Text.StyledText
     property int timeout: 4000
 
     Material.roundedScale: Material.NotRounded
@@ -32,6 +33,7 @@ Drawer {
         anchors.fill: parent
 
         wrapMode: Text.Wrap
+        textFormat: messageTextFormat
         text: _control.message
         horizontalAlignment: "AlignHCenter"
         verticalAlignment: "AlignVCenter"
