@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.15
 Item {
     id: _root
 
+    readonly property alias errorImplicitHeight: _errorLabel.implicitHeight
+
     property alias contentItem: _containterItem.contentItem
     property alias errorText: _errorLabel.text
     property alias errorColor: _errorLabel.color
