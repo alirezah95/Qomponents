@@ -8,6 +8,7 @@ Popup {
     property BusyIndicator busyIndicator: null
     property color messageColor: "green"
     property string message: "Please wait ..."
+    property alias messageLabel: _messageLbl
 
     modal: true
     dim: true
@@ -18,16 +19,20 @@ Popup {
     ColumnLayout {
         anchors.centerIn: parent
 
+        Control {
+            Layout.alignment: Qt.AlignHCenter
+            contentItem: busyIndicator
+        }
+
         Label {
+            id: _messageLbl
+            Layout.alignment: Qt.AlignHCenter
             visible: text.length > 0
             font: _root.font
 
             text: _root.message
             color: _root.messageColor
-        }
-
-        Control {
-            contentItem: busyIndicator
+            horizontalAlignment: "AlignHCenter"
         }
     }
 }
